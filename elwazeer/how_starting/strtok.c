@@ -10,8 +10,7 @@ int main(int __attribute__((unused)) argc, char *argv[])
 {
 	int i;
 	char *token;
-	char *str_copy = NULL; 
-
+	char *str_copy = NULL;
 
 	for (int i = 0; argv[i] != NULL; i++)
 	{

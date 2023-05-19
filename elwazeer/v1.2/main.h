@@ -12,6 +12,8 @@ int _strlen(char *str);
 char *get_command(char *line);
 void check_command(char *str);
 
-void execute_ls();
+void execute_ls(char *str);
+char **split_string(char *str, int *len);
+void free_2D(char **arr);
 
 #endif
