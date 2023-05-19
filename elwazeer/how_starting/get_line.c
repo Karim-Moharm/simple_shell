@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
 
 	line = (char *)malloc(sizeof(char) * n);
 
+	printf("$ ");
 	nread = getline(&line, &n, stdin);
 	printf("n= %ld\n %s\n", n, line);
 
