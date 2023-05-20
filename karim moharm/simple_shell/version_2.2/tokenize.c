@@ -9,7 +9,7 @@ char **tokenize(char *lineptr)
 	char *token, *delim = " \n\t";
 	int tok_counter = 0;
 
-	command = (char **)malloc(sizeof(char *) * 1024); 
+	command = (char **)malloc(sizeof(char *) * PATH_MAX_SIZE); 
 
 	if (command == NULL)
 	{
@@ -33,5 +33,3 @@ char **tokenize(char *lineptr)
 	command[tok_counter] = NULL;
 	return (command);
 }
-
-

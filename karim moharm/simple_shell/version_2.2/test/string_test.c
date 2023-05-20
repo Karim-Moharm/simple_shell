@@ -1,37 +1,5 @@
-#include <unistd.h>
 #include <stdio.h>
-#include "shell.h"
 #include <string.h>
-#include <stdlib.h>
-
-/**
- * _putchar: print char
- * @c: char
- * Return: on success 1, on error -1 
-*/
-int _putchar(char c)
-{
-    return (write(STDOUT_FILENO, &c, 1));
-}
-
-/**
- * _puts - print string
- * @srt: string to be printed
- * Retuen: number of char in the string
-*/
-int _puts(char *str)
-{
-    int i = 0;
-    int count = 0;
-
-    for (i = 0; str[i] != '\0'; i++)
-    {
-        _putchar(str[i]);
-        count++;
-    }
-    return (count);
-}
-
 /**
  * _strcmp - Compares two strings.
  * @s1: The first string to be compared.
@@ -97,3 +65,27 @@ char* _strdup(const char* str)
     return (ret_new);
 
 }
+
+
+int main(void)
+{ 
+    
+    char s1[] = "HElloddddddddddddd"; 
+    char s2[] = "Hellofffflfkkk"; 
+
+    int cmp = _strcmp(s1, s2);
+    int cmp2 = strcmp(s1, s2);
+    printf("%d\n", cmp);
+    printf("%d\n", cmp2); 
+
+    char *new1 = NULL;
+    char *new2 = NULL;
+    char str[] = "karim m";
+
+    new1 = strdup(str);
+    new2 = _strdup(str);
+
+    printf("%s\n", new1);
+    printf("%s\n", new2);
+
+} 

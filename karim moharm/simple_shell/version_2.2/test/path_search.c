@@ -4,34 +4,26 @@
 #include <string.h>
 #include <sys/stat.h>
 
-/* int search_in_Path(char *cmd)
+/**
+ * free_2D - deallocate an array of pointer to string
+ * @arr: pointer to pointer string
+ * Return: Nothing  
+*/
+void free_2D(char **arr)
 {
-    char *path = getenv("PATH");
-    char *token = NULL;
-    int check_access = 0;
-    int found = 0;
+    int i = 0;
 
-    token = strtok(path, ":");
-    while(token)
-    {
-        if ((check_access = access(cmd, X_OK)) == 0)
-        {
-            printf("command==> %s is found ", cmd);
-            found = 1;
-            break;
-        }
-        token = strtok(NULL, ":");
-    }
+    for (i = 0; arr[i]; i++)
+        free(arr[i]);
+    free(arr);
+}
 
-    return (found);
-
-} */
 
 char* search_in_Path_2(char *cmd)
 {
     char *path = NULL;
     char *tok_path = NULL;
-    char *path_dir = NULL;
+    char **path_dir = NULL;
     int path_count = 0;
     struct stat st;
 
@@ -40,11 +32,14 @@ char* search_in_Path_2(char *cmd)
     tok_path = strtok(path, ":");
     printf("path after token\n\n %s \n", path);
 
+    path_dir = (char **) malloc(sizeof(char *) * 1024);
+
     while (tok_path)
     {
         printf("entered while_1\n");
         /* path_dir[path_count] = tok_path; */
-        path_dir[path_count] = tok_path;
+        /* path_dir[path_count] = tok_path; */
+        path_dir[path_count] = strdup(tok_path);
         tok_path = strtok(NULL, ":");
         path_count++;
     }
@@ -60,18 +55,21 @@ char* search_in_Path_2(char *cmd)
             printf(" the command ==> %s FOUND\n", cmd);
             strcat(path_dir[path_count], "/");
             strcat(cmd, path);
+            free_2D(path_dir);
             break;
         }
         path_count++;
     }
+    free_2D(path_dir);
     return (cmd);
 } 
+
 
 int main(void)
 {
     char *cmd;
 
-    cmd = search_in_Path_2("ls");
+    cmd = search_in_Path_2("pwd");
 
     printf("cmd = %s\n", cmd);
 

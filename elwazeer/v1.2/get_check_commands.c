@@ -51,9 +51,9 @@ void check_command(char *str)
     else if (!(_strcmp("exit", av[0])))
     {
         free_2D(av);
-        
-        _exit(EXIT_SUCCESS);
-=
+
+        /* _exit(EXIT_SUCCESS); */
+
         exit(EXIT_SUCCESS);
 
     }

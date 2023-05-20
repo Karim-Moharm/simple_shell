@@ -1,5 +1,5 @@
-#ifndef _SHELL_H
-#define _SHELL_H
+#ifndef SHELL_H
+#define SHELL_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,6 +12,8 @@
 
 extern char **environ;
 
+#define PATH_MAX_SIZE 1024
+
 int _putchar (char c);
 int _puts(char *str);
 void free_2D(char **arr);
@@ -22,5 +24,6 @@ char **tokenize(char *lineptr);
 char *_getenv(const char *name);
 char* _strdup(const char* str);
 int search_for_char(char *cmd, char ch);
-int search_in_Path(char *cmd);
+char* search_in_Path(char *cmd);
+
 #endif

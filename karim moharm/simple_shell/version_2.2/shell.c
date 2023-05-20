@@ -1,6 +1,5 @@
 #include "shell.h"
 
-extern char **environ;
 
 /**
  * main - main function of the shell
@@ -49,8 +48,7 @@ int main(__attribute__((unused)) int argc, char *av[], char *envp[])
             /* check if command is full bath or not */
             /* not full bath command like ls or ls -l */
                 if (search_for_char(av[0], '/') == 0) 
-                {
-                }
+                    av[0] = search_in_Path (av[0]);
                 
                 if (execve(av[0], av, envp) == -1)
                 {
