@@ -8,20 +8,9 @@
  * Return: void
  */
 
-void execute_ls(char *str)
+void execute_ls(char **av)
 {
-    int count;
-    char **argv = split_string(str, &count);
-    printf("%d\n", count);
-    /*  printf("3\n");
-     argv[0] = "/bin/ls";
-     for (i = 0; i <= count; i++)
-     {
-         printf("4\n");
-         printf("%s\n", argv[i]);
-     } */
-
-    printf("5\n");
-    if (execve("/bin/ls", argv, NULL) == -1)
+    av[0] = "/bin/ls";
+    if (execve(av[0], av, NULL) == -1)
         print_string("Error:");
 }
