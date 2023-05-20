@@ -18,16 +18,23 @@ int main(void)
 
 	while (1)
 	{
-		print_string("($) ");
+		if (isatty(STDIN_FILENO))
+			print_string("($) ");
 		pid = fork();
+
+		if (pid < 0)
+		{
+			perror("fork failed");
+			exit(EXIT_FAILURE);
+			/* break; */
+		}
 
 		if (pid == 0)
 		{
 			get_command(command);
 			check_command(command);
 		}
-		else if (pid < 0)
-			exit(0);
+		
 		else
 			wait(&status);
 	}

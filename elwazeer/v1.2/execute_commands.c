@@ -23,5 +23,21 @@ void execute_ls(char *str)
 
     printf("5\n");
     if (execve("/bin/ls", argv, NULL) == -1)
-        print_string("Error:");
+    {
+        perror(argv[0]);
+        exit(EXIT_FAILURE);
+    }
 }
+
+/* void execute_ls(char **av, char **env)
+{
+    int count;
+    av = split_string(av[0], &count);
+    printf("%d\n", count);
+    printf("5\n");
+    if (execve(av[0], av, env) == -1)
+    {
+        perror(av[0]);
+        exit(EXIT_FAILURE);
+    }
+} */

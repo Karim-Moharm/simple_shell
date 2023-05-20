@@ -15,14 +15,16 @@ char *get_command(char *line)
     size_t size = 0;
     ssize_t check_read;
 
-    str_cpy = (char *)malloc(sizeof(char) * size);
-    if (str_cpy == NULL)
-        return (NULL);
+    /* str_cpy = (char *)malloc(sizeof(char) * size); */
+    /* if (str_cpy == NULL)
+        return (NULL); */
 
     check_read = getline(&str_cpy, &size, stdin);
     if (check_read == -1)
-        return (NULL);
-
+    {
+        free(str_cpy);
+        exit(EXIT_FAILURE);
+    }
     _strcpy(line, str_cpy);
 
     free(str_cpy);
@@ -52,7 +54,7 @@ void check_command(char *str)
     else if (!(_strcmp("exit", av[0])))
     {
         free_2D(av);
-        exit(0);
+        _exit(EXIT_SUCCESS);
     }
 }
 
