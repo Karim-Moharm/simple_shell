@@ -1,8 +1,4 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
 
 /**
  * get_command - create new command
@@ -30,9 +26,8 @@ char *get_command()
 void check_command(char *str)
 {
     char **av;
-    int count;
 
-    av = split_string(str, " \n", &count);
+    av = split_string(str, " \n");
 
     if (!(_strcmp("ls", av[0])) || !(_strcmp("/bin/ls", av[0])))
     {
@@ -52,16 +47,15 @@ void check_command(char *str)
  * Return: array of sring content new split strings
  */
 
-char **split_string(char *str, char *delim, int *len)
+char **split_string(char *str, char *delim)
 {
-    int max_split = 1024;
     char **splits;
     char *split, *command;
     int count = 0;
 
     command = _strdup(str);
 
-    splits = (char **)malloc(sizeof(char *) * max_split);
+    splits = (char **)malloc(sizeof(char *) * MAX_SIZE);
     if (splits == NULL)
         return (NULL);
 
@@ -72,7 +66,6 @@ char **split_string(char *str, char *delim, int *len)
         split = strtok(NULL, delim);
     }
     splits[count] = NULL;
-    *len = count;
     free(command);
     return (splits);
 }
