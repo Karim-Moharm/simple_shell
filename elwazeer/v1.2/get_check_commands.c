@@ -51,11 +51,11 @@ void check_command(char *str)
     else if (!(_strcmp("exit", av[0])))
     {
         free_2D(av);
-<<<<<<< HEAD
+        
         _exit(EXIT_SUCCESS);
-=======
+=
         exit(EXIT_SUCCESS);
->>>>>>> 7fc9c09b46540ead68a2281c558d2553f43f0a92
+
     }
 }
 

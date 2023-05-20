@@ -8,9 +8,8 @@
  * Return: void
  */
 
-void execute_ls(char **av)
+void execute_ls(char *str)
 {
-<<<<<<< HEAD
     int count;
     char **argv = split_string(str, &count);
     printf("%d\n", count);
@@ -30,7 +29,7 @@ void execute_ls(char **av)
     }
 }
 
-/* void execute_ls(char **av, char **env)
+/*  void execute_ls(char **av, char **env)
 {
     int count;
     av = split_string(av[0], &count);
@@ -41,10 +40,10 @@ void execute_ls(char **av)
         perror(av[0]);
         exit(EXIT_FAILURE);
     }
-} */
-=======
+} 
+
     av[0] = "/bin/ls";
     if (execve(av[0], av, NULL) == -1)
         print_string("Error:");
 }
->>>>>>> 7fc9c09b46540ead68a2281c558d2553f43f0a92
+ */
