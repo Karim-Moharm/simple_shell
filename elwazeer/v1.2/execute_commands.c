@@ -14,11 +14,11 @@ void execute_ls(char *str)
     char **argv = split_string(str, &count);
     printf("%d\n", count);
     /*  printf("3\n");
-     argv[0] = "/bin/ls";
-     for (i = 0; i <= count; i++)
-     {
-         printf("4\n");
-         printf("%s\n", argv[i]);
+    argv[0] = "/bin/ls";
+    for (i = 0; i <= count; i++)
+    {
+        printf("4\n");
+        printf("%s\n", argv[i]);
      } */
 
     printf("5\n");
