@@ -14,7 +14,6 @@ char **get_path()
 		return (NULL);
 	envv = _getenv("PATH");
 	av = split_string(envv, ":");
-
 	return (av);
 }
 
@@ -33,13 +32,13 @@ char *serach_in_path(char *str)
 	av = get_path();
 	while (av[count])
 	{
-	_strcat(av[count], "/");
-	_strcat(av[count], str);
-	if (stat(av[count], &st) == 0)
-	{
-		break;
-	}
-	count++;
+		_strcat(av[count], "/");
+		_strcat(av[count], str);
+		if (stat(av[count], &st) == 0)
+		{
+			break;
+		}
+		count++;
 	}
 	/* return NULL if command not found */
 	if (av[count] == NULL)
@@ -86,7 +85,7 @@ void print_env(void)
  */
 char *_getenv(char *name)
 {
-	int i, len = _strlen(name);
+	int i = 0, len = _strlen(name);
 	char **env = environ;
 
 	while (env[i] != NULL)

@@ -23,14 +23,14 @@ void execute_shell(char *command)
 {
 	pid_t pid;
 	int status;
-	char *cmd;
+	char *cmd = NULL;
 	char **av = NULL;
 
 	pid = fork();
 	if (pid == 0)
 	{
 		if (_strcmp("env\n", command) == 0)
-		print_env();
+			print_env();
 		av = split_string(command, " \n");
 		cmd = serach_in_path(av[0]);
 /* return to original command if not found and also return if value /bin/ls */
