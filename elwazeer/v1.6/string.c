@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdlib.h>
 
 /**
  * _strcpy - copy string
@@ -43,6 +42,7 @@ int _strcmp(char *str1, char *str2)
  * _strncmp - compare between two string
  * @str1: pointer to 1st string
  * @str2: pointer to 2nd string
+ * @n: number of charcter that will compare
  * Return: +ve or 0 or -ve
  */
 int _strncmp(char *str1, char *str2, unsigned int n)

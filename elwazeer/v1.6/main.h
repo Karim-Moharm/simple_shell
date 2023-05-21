@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 
 #define MAX_SIZE 1024
+
 extern char **environ;
 
 int _putchar(char c);
@@ -32,6 +33,8 @@ int check_path(char *str);
 char **split_string(char *str, char *delim);
 
 void execute(char **av);
+void execute_shell(char *command);
+
 char *_getenv(char *name);
 void print_env(void);
 
