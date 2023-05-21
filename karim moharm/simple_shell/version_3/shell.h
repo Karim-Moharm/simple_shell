@@ -18,19 +18,19 @@ extern char **environ;
 int _putchar (char c);
 int _puts(char *str);
 int _strcmp(const char *str1, const char *str2);
-char* _strdup(const char* str);
+char *_strdup(const char *str);
 char *_strcat(char *dest, const char *src);
+int _strlen(const char *s);
 
 void free_2D(char **arr);
 char *_getline(void);
 void handle_exit(char **argv, char *cmd);
-void print_env();
+void print_env(void);
 char *_getenv(const char *name);
 void excute_commands(char **argv, char **env, char *cmd);
 
 char **tokenize(char *lineptr);
 int search_for_char(char *cmd, char ch);
-char* search_in_Path(char *cmd);
-
+char *search_in_Path(char *cmd);
 
 #endif
