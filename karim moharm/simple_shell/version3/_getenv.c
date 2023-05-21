@@ -1,10 +1,12 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
 #include "shell.h"
 
 extern char **environ;
+
+/**
+ * _getenv - get the environment variables
+ * @name: name of varible
+ * Return: all varibles of that environment  and null if failed
+*/
 
 char *_getenv(const char *name)
 {
@@ -16,7 +18,7 @@ char *_getenv(const char *name)
     {
         if (strncmp(*env, name, len) == 0 && (*env)[len] == '=')
             return ((*env) + len + 1);
-
+            
         env++;
     }
     return ("(null)");

@@ -29,7 +29,6 @@ char *_getline(void)
 
 /**
  * print_env - function that print the environment var
- * Return: nothing
 */
 void print_env()
 {
@@ -60,6 +59,12 @@ void handle_exit(char **argv, char *cmd)
 }
 
 /**
+ * excute_commands - function that excute command 
+ * @argv: argument vector
+ * @env: environment variables
+ * @cmd: command to be excuted
+ * 
+ * Return: void
  * 
 */
 void excute_commands(char **argv, char **env, char *cmd)
@@ -82,13 +87,11 @@ void excute_commands(char **argv, char **env, char *cmd)
                 {
                     perror(argv[0]);
                     exit(EXIT_FAILURE);
-                    /* free_2D(argv); */
                     free(cmd);
                 }
         }
         else
         {
             wait(&status);
-            /* free_2D(argv); */
         }             
 }

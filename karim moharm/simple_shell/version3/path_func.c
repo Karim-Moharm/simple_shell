@@ -18,6 +18,17 @@ int search_for_char(char *cmd, char ch)
         return (0);
 }
 
+/**
+ * search_in_Path - search in path for commadn 
+ * @cmd: user inout command
+ * 
+ * Description: search in path variable for user input command 
+ * and concatenate it to be a directory so it be excuted
+ * 
+ * Return: full dir path of thr command
+ * 
+*/
+
 char* search_in_Path(char *cmd)
 {
     char *path = NULL;

@@ -1,8 +1,4 @@
-#include <unistd.h>
-#include <stdio.h>
 #include "shell.h"
-#include <string.h>
-#include <stdlib.h>
 
 /**
  * _putchar: print char

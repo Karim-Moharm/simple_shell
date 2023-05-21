@@ -1,7 +1,4 @@
 #include "shell.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 
 /**
  * tokenize - unsed to split input into tokens

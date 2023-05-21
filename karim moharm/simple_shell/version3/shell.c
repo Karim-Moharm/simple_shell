@@ -29,6 +29,6 @@ int main(__attribute__((unused)) int argc, char *av[], char *envp[])
         excute_commands(av, envp, lineptr);
         free(lineptr);
     }
-    /* free(lineptr); */
+    free (lineptr);
     return 0;
 }
