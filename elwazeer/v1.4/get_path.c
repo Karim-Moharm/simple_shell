@@ -27,7 +27,7 @@ char **get_path()
 char *serach_in_path(char *str)
 {
     char **av;
-    char *str_return;
+    char *str_return = NULL;
     int count = 0;
     struct stat st;
 
@@ -42,11 +42,27 @@ char *serach_in_path(char *str)
         }
         count++;
     }
+    /* return NULL if command not found */
+    if (av[count] == NULL)
+        return (NULL);
     str_return = _strdup(av[count]);
     free_2D(av);
     return (str_return);
 }
 
+/**
+ * check_path - the status
+ * @str: pointer to path
+ *  Return: 1 found or 0 not found
+ */
+int check_path(char *str)
+{
+    struct stat st;
+    if (stat(str, &st) == 0)
+        return (1);
+
+    return (0);
+}
 /**
  * print_env - print environment
  * Return: void

@@ -35,5 +35,6 @@ void free_2D(char **arr);
 
 void execute(char **av);
 void print_env(void);
+int check_path(char *str);
 
 #endif
