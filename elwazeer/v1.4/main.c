@@ -13,11 +13,11 @@ int main(void)
 
 	while (1)
 	{
+		free(command);
 		print_string("($) ");
 		command = get_command();
 		if (_strcmp("exit\n", command) == 0)
 		{
-			free_2D(av);
 			free(command);
 			exit(EXIT_SUCCESS);
 		}

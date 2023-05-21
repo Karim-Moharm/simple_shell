@@ -83,23 +83,3 @@ void free_2D(char **arr)
         free(arr[i]);
     free(arr);
 }
-
-extern char **environ;
-/**
- * _getenv - get environment
- * @str: pointer to string of variable
- * Return: value of variable
- */
-char *_getenv(char *name)
-{
-    int i, len = _strlen(name);
-    char **env = environ;
-
-    while (env[i] != NULL)
-    {
-        if ((_strncmp(env[i], name, len) == 0) && env[i][len] == '=')
-            return (&env[i][len + 1]);
-        i++;
-    }
-    return (NULL);
-}
