@@ -24,7 +24,7 @@ char **get_path()
  */
 char *serach_in_path(char *str)
 {
-	char **av;
+	char **av = NULL;
 	char *str_return = NULL;
 	int count = 0;
 	struct stat st;

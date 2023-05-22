@@ -32,7 +32,7 @@ int check_path(char *str);
 
 char **split_string(char *str, char *delim);
 
-int execute(char **av);
+void execute(char **av);
 void execute_shell(char *command);
 
 char *_getenv(char *name);

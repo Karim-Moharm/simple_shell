@@ -20,5 +20,6 @@ int main(void)
 		execute_shell(command);
 		free(command);
 	}
+	free(command);
 	return (0);
 }
