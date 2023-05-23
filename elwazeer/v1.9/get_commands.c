@@ -26,10 +26,8 @@ char *get_command()
 char **split_string(char *str, char *delim)
 {
 	char **splits;
-	char *split, *command;
+	char *split;
 	int count = 0;
-
-	command = _strdup(str);
 
 	splits = (char **)malloc(sizeof(char *) * MAX_SIZE);
 	if (splits == NULL)
@@ -38,11 +36,11 @@ char **split_string(char *str, char *delim)
 	split = strtok(str, delim);
 	while (split != NULL)
 	{
-		splits[count++] = _strdup(split);
+		splits[count] = _strdup(split);
 		split = strtok(NULL, delim);
+		count++;
 	}
 	splits[count] = NULL;
-	free(command);
 	return (splits);
 }
 

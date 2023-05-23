@@ -40,9 +40,10 @@ void execute_shell(char *command)
 		cmd = serach_in_path(av[0]);
 /* return to original command if not found and also return if value /bin/ls */
 		if (cmd == NULL)
-			av[0] = command;
+			_strcpy(av[0], command);
 		else
-			av[0] = cmd;
+			_strcpy(av[0], cmd);
+		free(cmd);
 		if (execute(av) == -1)
 		{
 			free(command);

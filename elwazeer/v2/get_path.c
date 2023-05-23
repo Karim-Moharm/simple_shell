@@ -9,9 +9,6 @@ char **get_path()
 	char **av;
 	char *envv;
 
-	envv = (char *)malloc(sizeof(char) * MAX_SIZE);
-	if (envv == NULL)
-		return (NULL);
 	envv = _getenv("PATH");
 	av = split_string(envv, ":");
 	return (av);
