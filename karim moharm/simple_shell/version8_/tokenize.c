@@ -26,13 +26,11 @@ char **tokenize(char *lineptr)
 
 	while (token)
 	{
-	/*	command[tok_counter] = _strdup(token);*/
 		command[tok_counter] = token;
 		token = strtok(NULL, delim);
 		tok_counter++;
 	}
 	command[tok_counter] = NULL;
-/*	free(free_cmd);*/
 
 	return (command);
 }
