@@ -59,7 +59,7 @@ char *full_path(char *dir, char *cmd)
 	str_return = (char *)malloc(sizeof(char) * len);
 	if (str_return == NULL)
 		return (NULL);
-	
+
 	for (i = 0; *(dir + i) != '\0'; i++)
 		*(str_return + i) = *(dir + i);
 
@@ -68,7 +68,7 @@ char *full_path(char *dir, char *cmd)
 	for (i = 0; *(cmd + i) != '\0'; i++)
 		*(str_return +  len_2 + i) = *(cmd + i);
 	*(str_return + len_2 + i) = '\0';
-	
+
 	return (str_return);
 }
 
