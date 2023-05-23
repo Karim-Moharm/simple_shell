@@ -12,7 +12,10 @@ char *get_command()
 
 	check_read = getline(&str, &size, stdin);
 	if (check_read == -1)
-		return (NULL);
+	{
+		free(str);
+		exit(EXIT_SUCCESS);
+	}
 
 	return (str);
 }

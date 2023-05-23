@@ -17,7 +17,7 @@ int main(void)
 			free(command);
 			continue;
 		}
-		if (_strcmp("exit\n", command) == 0)
+		if (_strcmp("exit\n", command) == 0 || command == NULL)
 		{
 			free(command);
 			exit(EXIT_SUCCESS);

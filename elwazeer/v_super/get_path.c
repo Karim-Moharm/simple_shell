@@ -39,6 +39,7 @@ char *serach_in_path(char *str)
 		free(assist);
 	}
 	/* return NULL if command not found */
+	free_2D(av);
 	return (NULL);
 }
 
