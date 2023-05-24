@@ -21,13 +21,14 @@ int execute(char **av, char **env)
  * @command: pointer to command
  * @av: pointer to content
  * @env: pointer to pointer
- * Return: void
+ * Return: 0 succees or -1 fail
  */
-void execute_shell(char *command, char **av, char **env)
+int execute_shell(char *command, char **av, char **env)
 {
 	pid_t pid;
 	int status;
 	char *cmd = NULL;
+	int i = 0;
 
 	pid = fork();
 	if (pid == 0)
@@ -39,8 +40,11 @@ void execute_shell(char *command, char **av, char **env)
 			exit(EXIT_SUCCESS);
 		}
 		av = split_string(command, " \t\n");
+		for (i = 0; av[i]; i++)
+			printf("xx = %s\n", av[i]);
+		if (av == NULL)
+			return (-1);
 		cmd = serach_in_path(av[0]);
-/* return to original command if not found and also return if value /bin/ls */
 		if (cmd != NULL)
 		{
 			free(av[0]);
@@ -64,4 +68,5 @@ void execute_shell(char *command, char **av, char **env)
 	}
 	else
 		wait(&status);
+	return (0);
 }

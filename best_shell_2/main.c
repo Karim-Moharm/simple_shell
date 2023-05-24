@@ -28,8 +28,8 @@ int main(int __attribute__ ((unused)) ac, char **av, char **env)
 			free(command);
 			exit(EXIT_SUCCESS);
 		}
-		execute_shell(command, av, env);
-		free(command);
+		if (execute_shell(command, av, env) == -1)
+			break;
 	}
 	free(command);
 
