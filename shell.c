@@ -37,7 +37,7 @@ int main(__attribute__((unused)) int argc, char **av, char *envp[])
 		if (_strcmp(av[0], "env\n") == 0)
 		{
 			print_env();
-			free(av);
+			free_2D(av);
 			free(lineptr);
 			continue;
 		}
