@@ -3,7 +3,7 @@
 /**
  * free_2D - deallocate an array of pointer to string
  * @arr: pointer to pointer string
- * Return: Nothing
+ * Return: void
 */
 void free_2D(char **arr)
 {
