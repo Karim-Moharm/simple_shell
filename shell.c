@@ -34,11 +34,11 @@ int main(__attribute__((unused)) int argc, char **av, char *envp[])
 		if (av[0] == NULL)
 			break;
 
-		if (_strcmp(av[0], "env\n") == 0)
+		if (_strcmp(av[0], "env") == 0)
 		{
 			print_env();
-			free_2D(av);
-			free(lineptr);
+			free(av);
+	/*		free(lineptr);*/
 			continue;
 		}
 
