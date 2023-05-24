@@ -36,7 +36,7 @@ void execute_shell(char *command)
 			free(command);
 			exit(EXIT_SUCCESS);
 		}
-		av = split_string(command, " \n");
+		av = split_string(command, " \t\n");
 		cmd = serach_in_path(av[0]);
 /* return to original command if not found and also return if value /bin/ls */
 		if (cmd != NULL)

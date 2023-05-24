@@ -14,8 +14,7 @@ int main(void)
 		command = get_command();
 		if (_strcmp("\n", command) == 0)
 		{
-			free(command);
-			continue;
+			break;
 		}
 		if (_strcmp("exit\n", command) == 0 || command == NULL)
 		{
