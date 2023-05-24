@@ -24,7 +24,6 @@ int _strlen(const char *s);
 int _strncmp(char *s1, const char *s2, int n);
 
 void free_2D(char **arr);
-char *_getline(void);
 void handle_exit(char **argv, char *cmd);
 void print_env(void);
 char *_getenv(const char *name);

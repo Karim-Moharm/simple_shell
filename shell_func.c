@@ -1,35 +1,6 @@
 #include "shell.h"
 
 /**
- * _getline - get the command from user
- *
- * Description: first check if the file referes to terminal
- * or not (interactive mode) using isatty function
- * then prints $ and take the command from the user
- *
- * Return: the entered command
- */
-
-/*char *_getline(void)
-{
-	char *lineRead = NULL;
-	size_t lineSize = 0;
-
-	if (isatty(STDERR_FILENO))
-	{
-		_puts("$ ");
-	}
-
-	if (getline(&lineRead, &lineSize, stdin) == EOF)
-	{
-		free(lineRead);
-		exit(EXIT_FAILURE);
-	}
-
-	return (lineRead);
-}*/
-
-/**
  * print_env - function that print the environment var
 */
 void print_env(void)
