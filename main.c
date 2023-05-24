@@ -29,6 +29,7 @@ int main(int __attribute__ ((unused)) ac, char *av[], char **env)
 	}
 	free_2D(av);
 	free(command);
+	exit(EXIT_SUCCESS);
 
 	return (0);
 }
