@@ -2,6 +2,9 @@
 
 /**
  * main - Entry point
+ * @ac: number
+ * @av: pointer to content
+ * @env: pointer to pointer
  * Return: 0 when success
  */
 int main(int ac, char __attribute__ ((unused)) **av, char **env)
