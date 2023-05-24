@@ -12,7 +12,7 @@ int main(void)
 	{
 		if (isatty(STDIN_FILENO))
 		{
-			print_string("$ ");
+			print_string("($) ");
 		}
 		command = get_command();
 		if (_strcmp("\n", command) == 0)
