@@ -30,9 +30,10 @@ void execute_shell(char *command, char **av)
 	pid = fork();
 	if (pid == 0)
 	{
-		if (_strcmp("env\n", command) == 0)
+		if (_strcmp("env", command) == 0)
 		{
 			print_env();
+			free_2D(av);
 			free(command);
 			exit(EXIT_SUCCESS);
 		}
