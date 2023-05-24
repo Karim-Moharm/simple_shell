@@ -38,6 +38,7 @@ void handle_exit(char **argv, char *cmd)
  * @argv: argument vector
  * @env: environment variables
  * @cmd: command to be excuted
+ * @file_name: name of file
  *
  * Return: void
  *

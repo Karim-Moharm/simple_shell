@@ -1,5 +1,10 @@
 #include "shell.h"
 
+/**
+ * sigintHandler - handle ctrl + c
+ * @sig_num: argument
+ * Return: void
+ */
 void sigintHandler(int sig_num)
 {
 	(void) sig_num;
