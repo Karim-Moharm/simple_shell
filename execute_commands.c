@@ -18,14 +18,14 @@ int execute(char **av)
 /**
  * execute_shell - execute shell
  * @command: pointer to command
+ * @av: pointer to pointer
  * Return: void
  */
-void execute_shell(char *command)
+void execute_shell(char *command, char **av)
 {
 	pid_t pid;
 	int status;
 	char *cmd = NULL;
-	char **av = NULL;
 
 	pid = fork();
 	if (pid == 0)
@@ -36,7 +36,6 @@ void execute_shell(char *command)
 			free(command);
 			exit(EXIT_SUCCESS);
 		}
-		av = split_string(command, " \t\n");
 		cmd = serach_in_path(av[0]);
 /* return to original command if not found and also return if value /bin/ls */
 		if (cmd != NULL)

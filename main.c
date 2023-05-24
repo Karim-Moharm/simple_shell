@@ -16,19 +16,21 @@ int main(void)
 			print_string("$ ");
 		}
 		command = get_command();
-		if (_strcmp("\n", command) == 0)
+		if (_strcmp("exit\n", command) == 0)
 		{
-			break;
+			free(command);
+			exit(EXIT_SUCCESS);
 		}
-		av = split_string(command, " \t\n");
+		av = split_string(command, " \n\t");
 		if (av[0] == NULL)
 		{
-			free_2D(av);
 			break;
 		}
-		execute_shell(command);
+		execute_shell(command, av);
 		free(command);
+		free_2D(av);
 	}
+	free_2D(av);
 	free(command);
 
 	return (0);
