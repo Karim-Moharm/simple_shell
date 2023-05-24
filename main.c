@@ -10,7 +10,10 @@ int main(void)
 
 	while (1)
 	{
-		print_string("$ ");
+		if (isatty(STDIN_FILENO))
+		{
+			print_string("($) ");
+		}
 		command = get_command();
 		if (_strcmp("\n", command) == 0)
 		{
@@ -25,5 +28,6 @@ int main(void)
 		free(command);
 	}
 	free(command);
+
 	return (0);
 }

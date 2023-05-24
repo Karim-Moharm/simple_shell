@@ -25,14 +25,19 @@ char *search_in_path(char *str)
 	char *assist = NULL;
 	int count = 0;
 	struct stat st;
+	int i;
 
 	av = get_path();
+	for (i = 0; av[i]; i++)
+		printf("avvv = %s\n", av[i]);
 	while (av[count])
 	{
+		printf("av %s\n", av[count]);
 		assist = full_path(av[count], str);
+		printf("xx = %s\n", assist);
 		if (stat(assist, &st) == 0)
 		{
-			free_2D(av);
+			free(av);
 			return (assist);
 		}
 		count++;
