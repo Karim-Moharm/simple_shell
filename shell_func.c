@@ -65,9 +65,11 @@ void excute_commands(char **argv, char **env, char *cmd, char file_name[1024])
 		if (execve(argv[0], argv, env) == -1)
 		{
 
-			_puts("sh: 1: ");
 			_puts(file_name);
+			_puts("sh: 1: ");
+			_puts(argv[0]);
 			_puts(": not found\n");
+
 			free(cmd);
 			free(argv);
 			exit(EXIT_FAILURE);
