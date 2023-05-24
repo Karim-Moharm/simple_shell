@@ -3,12 +3,11 @@
 /**
  * execute - execute command
  * @av: pointer to av
- * @env: pointer to pointer
  * Return: 0 on success or -1 on Fail
  */
-int execute(char **av, char **env)
+int execute(char **av)
 {
-	if (execve(av[0], av, env) == -1)
+	if (execve(av[0], av, NULL) == -1)
 	{
 		perror(av[0]);
 		return (-1);
@@ -19,15 +18,14 @@ int execute(char **av, char **env)
 /**
  * execute_shell - execute shell
  * @command: pointer to command
- * @av: pointer to content
- * @env: pointer to pointer
  * Return: void
  */
-void execute_shell(char *command, char **av, char **env)
+void execute_shell(char *command)
 {
 	pid_t pid;
 	int status;
 	char *cmd = NULL;
+	char **av = NULL;
 
 	pid = fork();
 	if (pid == 0)
@@ -48,7 +46,7 @@ void execute_shell(char *command, char **av, char **env)
 			_strcpy(av[0], cmd);
 		}
 		free(cmd);
-		if (execute(av, env) == -1)
+		if (execute(av) == -1)
 		{
 			free(command);
 			free_2D(av);
@@ -59,7 +57,7 @@ void execute_shell(char *command, char **av, char **env)
 	{
 		free_2D(av);
 		free(command);
-		perror("Error:");
+		perror("fork");
 		exit(EXIT_FAILURE);
 	}
 	else

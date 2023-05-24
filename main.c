@@ -2,9 +2,12 @@
 
 /**
  * main - Entry point
+ * @ac: number
+ * @av: pointer to content
+ * @env: pointer to pointer
  * Return: 0 when success
  */
-int main(void)
+int main(int __attribute__ ((unused)) ac, char **av, char **env)
 {
 	char *command = NULL;
 
@@ -15,16 +18,17 @@ int main(void)
 			print_string("$ ");
 		}
 		command = get_command();
-		if (_strcmp("\n", command) == 0)
+		if (_strcmp("\n", command) == 0 || command == NULL)
 		{
-			break;
+			free(command);
+			exit(EXIT_SUCCESS);
 		}
 		if (_strcmp("exit\n", command) == 0 || command == NULL)
 		{
 			free(command);
 			exit(EXIT_SUCCESS);
 		}
-		execute_shell(command);
+		execute_shell(command, av, env);
 		free(command);
 	}
 	free(command);
