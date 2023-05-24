@@ -62,6 +62,7 @@ int main(__attribute__((unused)) int argc, char **av, char *envp[])
 		if (is_interrupted)
 		{
 			free(lineptr);
+			_puts("\n");
 			exit(EXIT_SUCCESS);
 
 		}

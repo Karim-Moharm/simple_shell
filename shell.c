@@ -22,15 +22,11 @@ int main(__attribute__((unused)) int argc, char **av, char *envp[])
 	char *lineptr = NULL;
 	size_t n = 0;
 	char av_name[1024];
-	
+
 	strcpy(av_name, av[0]);
-
 	signal(SIGINT, sigintHandler);
-
 	while (1)
 	{
-
-		/*lineptr = _getline();*/
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
 		if (getline(&lineptr, &n, stdin) == -1)
@@ -54,14 +50,12 @@ int main(__attribute__((unused)) int argc, char **av, char *envp[])
 		{
 			print_env();
 			free(av);
-	/*		free(lineptr);*/
 			continue;
 		}
 
 		handle_exit(av, lineptr);
 		excute_commands(av, envp, lineptr, av_name);
 	}
-
 	free(lineptr);
 	return (0);
 }
