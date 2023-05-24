@@ -6,11 +6,11 @@
 void print_env(void)
 {
 	int i = 0;
-	extern char **environ;
+	char **env = environ;
 
-	while (environ[i])
+	while (env[i])
 	{
-		_puts(environ[i++]);
+		_puts(env[i++]);
 		_puts("\n");
 	}
 }
