@@ -3,15 +3,16 @@
 /**
  * execute - execute command
  * @av: pointer to av
- * Return: void
+ * Return: 0 on success or -1 on Fail
  */
-void execute(char **av)
+int execute(char **av)
 {
 	if (execve(av[0], av, NULL) == -1)
 	{
 		perror(av[0]);
-		free_2D(av);
+		return (-1);
 	}
+	return (0);
 }
 
 /**
@@ -26,30 +27,31 @@ void execute_shell(char *command)
 	char *cmd = NULL;
 	char **av = NULL;
 
-
-	av = split_string(command, " \n");
-	handle_exit(av, command);
-	if (handle_env(av) == 0)
-		return;
-	cmd = search_in_path(av[0]);
-	if (cmd == NULL)
-	{
-		free(cmd);
-		execute(av);
-		return;
-	}
-	else
-	{
-		free(av[0]);
-		av[0] = (char *)malloc(sizeof(char) * MAX_SIZE);
-		_strcpy(av[0], cmd);
-	}
-	free(cmd);
-
 	pid = fork();
 	if (pid == 0)
 	{
-		execute(av);
+		if (_strcmp("env\n", command) == 0)
+		{
+			print_env();
+			free(command);
+			exit(EXIT_SUCCESS);
+		}
+		av = split_string(command, " \n");
+		cmd = serach_in_path(av[0]);
+/* return to original command if not found and also return if value /bin/ls */
+		if (cmd != NULL)
+		{
+			free(av[0]);
+			av[0] = (char *)malloc(sizeof(char) * MAX_SIZE);
+			_strcpy(av[0], cmd);
+		}
+		free(cmd);
+		if (execute(av) == -1)
+		{
+			free(command);
+			free_2D(av);
+			exit(EXIT_FAILURE);
+		}
 	}
 	else if (pid < 0)
 	{
@@ -60,37 +62,4 @@ void execute_shell(char *command)
 	}
 	else
 		wait(&status);
-}
-
-/**
- * handle_exit - handle the exit status
- * @av: pointer to array
- * @cmd: pointer to command
- * Return: void
- */
-void handle_exit(char **av, char *cmd)
-{
-	if (_strcmp(av[0], "exit") == 0)
-	{
-		free(av);
-		free(cmd);
-		exit(EXIT_SUCCESS);
-	}
-}
-
-/**
- * heandle_env - handle the env
- * @av: pointer to array
- * @cmd: pointer to command
- * Return: 0 on SUCCESS -1 fail
- */
-int handle_env(char **av)
-{
-	if (_strcmp(av[0], "env") == 0)
-	{
-		print_env();
-		free_2D(av);
-		return (0);
-	}
-	return (-1);
 }

@@ -15,11 +15,11 @@ char **get_path()
 }
 
 /**
- * serach_in_path - search in path
+ * search_in_path - search in path
  * @str: pointer to command
  * Return: path of command
  */
-char *serach_in_path(char *str)
+char *search_in_path(char *str)
 {
 	char **av;
 	char *assist = NULL;

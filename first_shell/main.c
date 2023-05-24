@@ -10,17 +10,12 @@ int main(void)
 
 	while (1)
 	{
-		print_string("$ ");
+		print_string("($) ");
 		command = get_command();
 		if (_strcmp("\n", command) == 0)
 		{
 			free(command);
 			continue;
-		}
-		if (_strcmp("exit\n", command) == 0 || command == NULL)
-		{
-			free(command);
-			exit(EXIT_SUCCESS);
 		}
 		execute_shell(command);
 		free(command);
