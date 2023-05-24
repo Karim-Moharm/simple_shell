@@ -7,11 +7,10 @@
  * @env: pointer to pointer
  * Return: 0 when success
  */
-int main(int ac, char __attribute__ ((unused)) **av, char **env)
+int main(int __attribute__ ((unused)) ac, char **av, char **env)
 {
 	char *command = NULL;
 
-	(void)ac;
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
@@ -28,7 +27,7 @@ int main(int ac, char __attribute__ ((unused)) **av, char **env)
 			free(command);
 			exit(EXIT_SUCCESS);
 		}
-		execute_shell(command, env);
+		execute_shell(command, av, env);
 		free(command);
 	}
 	free(command);

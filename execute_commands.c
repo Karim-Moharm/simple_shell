@@ -19,15 +19,15 @@ int execute(char **av, char **env)
 /**
  * execute_shell - execute shell
  * @command: pointer to command
+ * @av: pointer to content
  * @env: pointer to pointer
  * Return: void
  */
-void execute_shell(char *command, char **env)
+void execute_shell(char *command, char **av, char **env)
 {
 	pid_t pid;
 	int status;
 	char *cmd = NULL;
-	char **av = NULL;
 
 	pid = fork();
 	if (pid == 0)
@@ -63,8 +63,5 @@ void execute_shell(char *command, char **env)
 		exit(EXIT_FAILURE);
 	}
 	else
-	{
 		wait(&status);
-		free(av);
-	}
 }
