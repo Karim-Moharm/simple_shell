@@ -2,12 +2,13 @@
 
 /**
  * main - Entry point
+ * @ac: number
+ * @av: pointer to content
  * Return: 0 when success
  */
-int main(void)
+int main(int __attribute__ ((unused)) ac, char *av[])
 {
 	char *command = NULL;
-	char **av = NULL;
 
 	while (1)
 	{
