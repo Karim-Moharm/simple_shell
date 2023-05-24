@@ -4,9 +4,10 @@
  * main - Entry point
  * @ac: number
  * @av: pointer to content
+ * @env: pointer to pointer
  * Return: 0 when success
  */
-int main(int __attribute__ ((unused)) ac, char *av[])
+int main(int __attribute__ ((unused)) ac, char *av[], char **env)
 {
 	char *command = NULL;
 
@@ -22,7 +23,7 @@ int main(int __attribute__ ((unused)) ac, char *av[])
 		{
 			break;
 		}
-		execute_shell(command, av);
+		execute_shell(command, av, env);
 		free(command);
 		free_2D(av);
 	}

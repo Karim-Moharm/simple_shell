@@ -31,8 +31,8 @@ char *full_path(char *dir, char *cmd);
 
 char **split_string(char *str, char *delim);
 
-int execute(char **av);
-void execute_shell(char *command, char **av);
+int execute(char **av, char **env);
+void execute_shell(char *command, char **av, char **env);
 
 char *_getenv(char *name);
 void print_env(void);
