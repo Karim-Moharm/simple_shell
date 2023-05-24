@@ -9,8 +9,8 @@ void sigintHandler(int sig_num)
 {
 	(void) sig_num;
 
-	signal(SIGINT, sigintHandler);
-	_puts("\n");
+/*	signal(SIGINT, sigintHandler);*/
+	_puts("\n$ ");
 	fflush(stdout);
 }
 
