@@ -10,9 +10,7 @@ int execute(char **av, char **env)
 {
 	if (execve(av[0], av, env) == -1)
 	{
-		print_string("sh: 1: ");
-		print_string(av[0]);
-		print_string(": not found");
+		perror(av[0]);
 		return (-1);
 	}
 	return (0);
