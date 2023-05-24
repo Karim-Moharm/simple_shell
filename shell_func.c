@@ -66,7 +66,7 @@ void excute_commands(char **argv, char **env, char *cmd, char file_name[1024])
 		{
 
 			_puts(file_name);
-			_puts("sh: 1: ");
+			_puts(": 1: ");
 			_puts(argv[0]);
 			_puts(": not found\n");
 

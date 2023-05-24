@@ -8,8 +8,10 @@
 void sigintHandler(int sig_num)
 {
 	(void) sig_num;
-	fflush(stdout);
+
+	signal(SIGINT, sigintHandler);
 	_puts("\n");
+	fflush(stdout);
 }
 
 /**
