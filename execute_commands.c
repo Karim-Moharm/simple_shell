@@ -3,12 +3,11 @@
 /**
  * execute - execute command
  * @av: pointer to av
- * @env: pointer to pointer
  * Return: 0 on success or -1 on Fail
  */
-int execute(char **av, char **env)
+int execute(char **av)
 {
-	if (execve(av[0], av, env) == -1)
+	if (execve(av[0], av, NULL) == -1)
 	{
 		perror(av[0]);
 		return (-1);
@@ -19,15 +18,14 @@ int execute(char **av, char **env)
 /**
  * execute_shell - execute shell
  * @command: pointer to command
- * @av: pointer to content
- * @env: pointer to pointer
- * Return: 0 succees or -1 fail
+ * Return: void
  */
-int execute_shell(char *command, char **av, char **env)
+void execute_shell(char *command)
 {
 	pid_t pid;
 	int status;
 	char *cmd = NULL;
+	char **av = NULL;
 
 	pid = fork();
 	if (pid == 0)
@@ -38,16 +36,9 @@ int execute_shell(char *command, char **av, char **env)
 			free(command);
 			exit(EXIT_SUCCESS);
 		}
-		av = split_string(command, " \n\t");
-		if (av[0] == NULL)
-		{
-			free_2D(av);
-			free(command);
-			exit(0);
-			exit(0);
-			return (-1);
-		}
+		av = split_string(command, " \t\n");
 		cmd = serach_in_path(av[0]);
+/* return to original command if not found and also return if value /bin/ls */
 		if (cmd != NULL)
 		{
 			free(av[0]);
@@ -55,7 +46,7 @@ int execute_shell(char *command, char **av, char **env)
 			_strcpy(av[0], cmd);
 		}
 		free(cmd);
-		if (execute(av, env) == -1)
+		if (execute(av) == -1)
 		{
 			free(command);
 			free_2D(av);
@@ -71,5 +62,4 @@ int execute_shell(char *command, char **av, char **env)
 	}
 	else
 		wait(&status);
-	return (0);
 }

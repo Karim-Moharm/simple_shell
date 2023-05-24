@@ -28,7 +28,7 @@ char *get_command()
  */
 char **split_string(char *str, char *delim)
 {
-	char **splits = NULL;
+	char **splits;
 	char *split;
 	int count = 0;
 
@@ -39,7 +39,6 @@ char **split_string(char *str, char *delim)
 	split = strtok(str, delim);
 	while (split != NULL)
 	{
-		printf("found");
 		splits[count++] = _strdup(split);
 		split = strtok(NULL, delim);
 	}

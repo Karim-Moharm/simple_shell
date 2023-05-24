@@ -29,7 +29,9 @@ int main(int __attribute__ ((unused)) ac, char **av, char **env)
 			exit(EXIT_SUCCESS);
 		}
 		if (execute_shell(command, av, env) == -1)
+		{
 			break;
+		}
 	}
 	free(command);
 
