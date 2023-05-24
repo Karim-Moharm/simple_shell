@@ -17,13 +17,8 @@ int main(int __attribute__ ((unused)) ac, char *av[])
 			print_string("$ ");
 		}
 		command = get_command();
-		if (_strcmp("exit\n", command) == 0)
-		{
-			free(command);
-			exit(EXIT_SUCCESS);
-		}
 		av = split_string(command, " \n\t");
-		if (av[0] == NULL)
+		if (av[0] == NULL || _strcmp(av[0], "exit") == 0)
 		{
 			break;
 		}
