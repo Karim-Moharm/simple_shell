@@ -25,7 +25,6 @@ int main(__attribute__((unused)) int argc, char *av[], char *envp[])
 			continue;
 		}
 
-
 		if (_strcmp(av[0], "env") == 0)
 		{
 			print_env();

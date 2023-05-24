@@ -32,6 +32,7 @@ void excute_commands(char **argv, char **env, char *cmd);
 
 char **tokenize(char *lineptr);
 int search_for_char(char *cmd, char ch);
-char *search_in_Path(char *cmd);
+char *search_in_Path(char *cmd, int *flag);
+int is_command (char **argv);
 
 #endif

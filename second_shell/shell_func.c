@@ -75,28 +75,49 @@ void excute_commands(char **argv, char **env, char *cmd)
 {
 	pid_t child_pid = 0;
 	int status;
+	int flag;
 
-	child_pid = fork();
-	if (child_pid < 0)
+	if (is_command(argv) == 1)
 	{
-		free(argv);
-		free(cmd);
-		perror("fork");
-		exit(EXIT_FAILURE);
-	}
-	if (child_pid == 0)
-	{
-		if (search_for_char(argv[0], '/') == 0)
-			argv[0] = search_in_Path(argv[0]);
-
-		if (execve(argv[0], argv, env) == -1)
+		child_pid = fork();
+		if (child_pid < 0)
 		{
-			perror(argv[0]);
-			free(cmd);
 			free(argv);
+			free(cmd);
+			perror("fork");
 			exit(EXIT_FAILURE);
 		}
+		if (child_pid == 0)
+		{
+			if (search_for_char(argv[0], '/') == 0)
+				argv[0] = search_in_Path(argv[0], &flag);
+
+			execve(argv[0], argv, env);
+		 }
+	}
+	else
+	{
+		perror(argv[0]);
+		free(argv);
+		free(cmd);
+		exit(EXIT_FAILURE);
 	}
 	wait(&status);
 	free(argv);
+}
+
+
+
+/**
+ */
+
+int is_command (char **argv)
+{
+	int n = 0;
+
+	search_in_Path(argv[0], &n);
+	if (n == 1)
+		return (1);
+	return (n);
+
 }

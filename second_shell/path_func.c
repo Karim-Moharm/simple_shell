@@ -29,7 +29,7 @@ int search_for_char(char *cmd, char ch)
  * Return: full dir path of thr command
  */
 
-char *search_in_Path(char *cmd)
+char *search_in_Path(char *cmd, int *flag)
 {
 	char *path = NULL;
 	char *tok_path = NULL;
@@ -38,6 +38,7 @@ char *search_in_Path(char *cmd)
 	struct stat st;
 	char *old_wd;
 
+	*flag = 0;
 	old_wd = getcwd(NULL, PATH_MAX_SIZE);
 	path = getenv("PATH");
 	tok_path = strtok(path, ":");
@@ -59,6 +60,7 @@ char *search_in_Path(char *cmd)
 		{
 			path_dir[path_count] = _strcat(path_dir[path_count], "/");
 			cmd = _strcat(path_dir[path_count], cmd);
+			*flag = 1;
 			break;
 		}
 		path_count++;
