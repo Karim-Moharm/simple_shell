@@ -19,7 +19,7 @@ int main(void)
 		{
 			break;
 		}
-		if (_strcmp("exit\n", command) == 0 || command == NULL)
+		if (command == NULL || _strcmp("\n", command) == 0)
 		{
 			free(command);
 			exit(EXIT_SUCCESS);

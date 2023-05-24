@@ -40,10 +40,6 @@ int execute_shell(char *command, char **av, char **env)
 			exit(EXIT_SUCCESS);
 		}
 		av = split_string(command, " \t\n");
-		for (i = 0; av[i]; i++)
-			printf("xx = %s\n", av[i]);
-		if (av == NULL)
-			return (-1);
 		cmd = serach_in_path(av[0]);
 		if (cmd != NULL)
 		{
