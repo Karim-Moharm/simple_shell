@@ -57,7 +57,7 @@ void execute_shell(char *command)
 	{
 		free_2D(av);
 		free(command);
-		perror("Error:");
+		perror("fork");
 		exit(EXIT_FAILURE);
 	}
 	else
