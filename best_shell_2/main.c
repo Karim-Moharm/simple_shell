@@ -2,9 +2,12 @@
 
 /**
  * main - Entry point
+ * @ac: number
+ * @av: pointer to content
+ * @env: pointer to pointer
  * Return: 0 when success
  */
-int main(void)
+int main(int __attribute__ ((unused)) ac, char **av, char **env)
 {
 	char *command = NULL;
 
@@ -24,7 +27,7 @@ int main(void)
 			free(command);
 			exit(EXIT_SUCCESS);
 		}
-		execute_shell(command);
+		execute_shell(command, av, env);
 		free(command);
 	}
 	free(command);
