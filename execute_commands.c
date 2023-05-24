@@ -63,5 +63,8 @@ void execute_shell(char *command, char **env)
 		exit(EXIT_FAILURE);
 	}
 	else
+	{
 		wait(&status);
+		free(av);
+	}
 }
